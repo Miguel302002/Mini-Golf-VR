@@ -1,0 +1,10 @@
+# ninja log v5
+122	2118	7626745015661865	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	2c5aaaf52379f793
+57	2144	7626745015816892	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	d4b72839790e5868
+1	2162	7626745016006927	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	4b1a6b8c7f1b550d
+109	2163	7626745016146953	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	5c9de83fcb7306f9
+137	2219	7626745016727052	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	84d81c06708224f4
+48	2297	7626745017552197	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	68d81e103af8d5eb
+98	2531	7626745019877603	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	ea2da7b5078a7eb8
+9	2594	7626745020492714	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	22827f9ac8d20f03
+2594	2817	7626745022843118	C:/Users/wicke/Documents/GitHub/Mini-Golf-VR/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6a6d535l/obj/arm64-v8a/libgame.so	982cfa0fc86b438c
