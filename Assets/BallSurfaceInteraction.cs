@@ -1,54 +1,51 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages the interaction between the ball and various surface types (e.g., ice, water, sand, etc.) to apply unique physical properties like drag and bounciness.
+/// Worked on by: Jonathan R
+/// </summary>
 public class BallSurfaceInteraction : MonoBehaviour
 {
     private Rigidbody rb;
 
-    public float sandDrag = 1f;
-    public float iceDrag = 0.1f;
-    public float waterDrag = 0.05f;
-    public float lavaDrag = 1f;
-    public float normalDrag = 0.2f;
+    // Surface properties
+    public float sandDrag = 1f, iceDrag = 0.1f, waterDrag = 0.05f, lavaDrag = 1f, normalDrag = 0.2f;
+    public float sandBounciness = 0.1f, lavaBounciness = 0.8f, normalBounciness = 0.3f;
 
-    public float sandBounciness = 0.1f;
-    public float lavaBounciness = 0.8f;
-    public float normalBounciness = 0.3f;
-
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnCollisionStay(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ice"))
+        switch (collision.gameObject.tag)
         {
-            rb.linearDamping = iceDrag;
-            rb.GetComponent<Collider>().material.bounciness = normalBounciness;
-        }
-        else if (collision.gameObject.CompareTag("Water"))
-        {
-            rb.linearDamping = waterDrag;
-            rb.GetComponent<Collider>().material.bounciness = normalBounciness;
-        }
-        else if (collision.gameObject.CompareTag("Lava"))
-        {
-            rb.linearDamping = lavaDrag;
-            rb.GetComponent<Collider>().material.bounciness = lavaBounciness;
-        }
-        else if (collision.gameObject.CompareTag("Sand"))
-        {
-            rb.linearDamping = sandDrag;
-            rb.GetComponent<Collider>().material.bounciness = sandBounciness;
-        }
-        else
-        {
-            // Default behavior (e.g., on normal grass)
-            rb.linearDamping = normalDrag;
-            rb.GetComponent<Collider>().material.bounciness = normalBounciness;
+            case "Ice":
+                ApplySurfaceProperties(iceDrag, normalBounciness);
+                break;
+            case "Water":
+                ApplySurfaceProperties(waterDrag, normalBounciness);
+                break;
+            case "Lava":
+                ApplySurfaceProperties(lavaDrag, lavaBounciness);
+                break;
+            case "Sand":
+                ApplySurfaceProperties(sandDrag, sandBounciness);
+                break;
+            default:
+                ApplySurfaceProperties(normalDrag, normalBounciness);
+                break;
         }
     }
+
+    private void ApplySurfaceProperties(float drag, float bounciness)
+    {
+        rb.linearDamping = drag;
+        rb.GetComponent<Collider>().material.bounciness = bounciness;
+    }
 }
+
 
 
 

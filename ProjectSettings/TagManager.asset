@@ -10,6 +10,10 @@ TagManager:
   - Grass
   - Sand
   - Water
+  - Ball
+  - Ice
+  - Lava
+  - Hole
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles the resetting of the ball when it goes out of bounds or falls into a hole.
+/// Worked on by Jonathan R
+/// </summary>
 public class BallReset : MonoBehaviour
 {
     public Transform ball;
@@ -13,7 +17,7 @@ public class BallReset : MonoBehaviour
 
     private void Update()
     {
-        // Check if the ball is outside the boundaries
+        // Check if the ball is outside the boundaries and reset if necessary
         if (ball.position.x < boundaryXMin || ball.position.x > boundaryXMax ||
             ball.position.z < boundaryZMin || ball.position.z > boundaryZMax ||
             ball.position.y < resetHeight)
@@ -26,6 +30,7 @@ public class BallReset : MonoBehaviour
     {
         if (other.CompareTag("Hole"))
         {
+            Debug.Log("WINNER!!");
             ResetBall();
         }
     }
@@ -38,4 +43,5 @@ public class BallReset : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
     }
 }
+
 

@@ -12,10 +12,11 @@ public class GolfBallPhysics : MonoBehaviour
     private float sinkDuration = 2.0f; // How long it takes to sink
     private float resetDelay = 1.0f; // Delay before resetting the ball after sinking
 
-    // Ball reset position (set to your desired point on the course)
-    private Vector3 resetPosition = new Vector3(0, 0.5f, 0);
+    // Boundary for randomizing reset position (set X, Y, and Z limits)
+    public Vector3 minPosition = new Vector3(-5f, 0.5f, -5f);  // Minimum boundary
+    public Vector3 maxPosition = new Vector3(5f, 0.5f, 5f);   // Maximum boundary
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.mass = 0.5f;            // Set the mass for the ball
@@ -67,8 +68,13 @@ public class GolfBallPhysics : MonoBehaviour
 
     private void ResetBallPosition()
     {
+        // Randomly generate the position inside the boundary range
+        float randomX = Random.Range(minPosition.x, maxPosition.x);
+        float randomZ = Random.Range(minPosition.z, maxPosition.z);
+        Vector3 randomPosition = new Vector3(randomX, minPosition.y, randomZ);
+
         // Reset the ball's position and stop any movement
-        transform.position = resetPosition; 
+        transform.position = randomPosition; 
         rb.linearVelocity = Vector3.zero;          // Stop the ball's velocity
         rb.angularVelocity = Vector3.zero;  // Stop the ball from spinning
         canInteract = true; // Enable interaction again
@@ -82,6 +88,8 @@ public class GolfBallPhysics : MonoBehaviour
         }
     }
 }
+
+
 
 
 

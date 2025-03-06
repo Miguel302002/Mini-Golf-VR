@@ -1,88 +1,67 @@
 using UnityEngine;
 
+/// <summary>
+/// Controls the ball's behavior, applying forces based on player input and environmental factors (sand, water).
+/// Worked on by Jonathan R
+/// </summary>
 public class BallController : MonoBehaviour
 {
-    public float pushForce = 1f; // Speed of the ball
+    public float pushForce = 1f; // Speed of the ball when hit
     private Rigidbody rb;
-    private bool inSand = false; // Check if the ball is in sand
-    private bool inWater = false; // Check if the ball is in water
-    private float sandPenalty = 0.7f; // Reduce power in sand
-    private float waterResistance = 0.5f; // Reduce ball speed in water
+    private SurfaceType currentSurface = SurfaceType.Normal; // Keeps track of the surface the ball is on
+    private bool canInteract = true; // Flag to manage input during sinking
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (inWater)
-        {
-            // Prevent player input while in water
-            return;
-        }
+        if (!canInteract) return; // Prevent input if canInteract is false
 
-        // Push the ball using WASD or arrow keys
-        if (Input.GetKeyDown(KeyCode.W)) 
+        // Prevent input when in water
+        if (currentSurface == SurfaceType.Water) return;
+
+        // Handle player input to push the ball in the direction of the key press
+        if (Input.GetKeyDown(KeyCode.W)) ApplyHit(Vector3.forward);
+        if (Input.GetKeyDown(KeyCode.S)) ApplyHit(Vector3.back);
+        if (Input.GetKeyDown(KeyCode.A)) ApplyHit(Vector3.left);
+        if (Input.GetKeyDown(KeyCode.D)) ApplyHit(Vector3.right);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        SurfaceType surface = GetSurfaceType(collision.gameObject.tag);
+        if (surface != SurfaceType.Normal) currentSurface = surface;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        // Reset surface type when the ball leaves a surface
+        currentSurface = SurfaceType.Normal;
+    }
+
+    private void FixedUpdate()
+    {
+        // Apply surface resistance if ball is on a non-normal surface
+        ApplySurfaceResistance();
+    }
+
+    private void ApplySurfaceResistance()
+    {
+        switch (currentSurface)
         {
-            ApplyHit(Vector3.forward, pushForce);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            ApplyHit(Vector3.back, pushForce);
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ApplyHit(Vector3.left, pushForce);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            ApplyHit(Vector3.right, pushForce);
+            case SurfaceType.Sand:
+                ApplySandResistance();
+                break;
+            case SurfaceType.Water:
+                ApplyWaterResistance();
+                break;
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Sand"))
-        {
-            Debug.Log("Ball in Sand! Applying friction.");
-            inSand = true;
-        }
-
-        if (collision.gameObject.CompareTag("Water"))
-        {
-            Debug.Log("Ball in Water! Applying resistance.");
-            inWater = true;
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Sand"))
-        {
-            inSand = false;
-        }
-
-        if (collision.gameObject.CompareTag("Water"))
-        {
-            inWater = false;
-        }
-    }
-
-    void FixedUpdate()
-    {
-        if (inSand)
-        {
-            ApplySandResistance();
-        }
-        
-        if (inWater)
-        {
-            ApplyWaterResistance();
-        }
-    }
-
-    void ApplySandResistance()
+    private void ApplySandResistance()
     {
         if (rb.linearVelocity.magnitude > 0.05f)
         {
@@ -90,29 +69,63 @@ public class BallController : MonoBehaviour
         }
     }
 
-    void ApplyWaterResistance()
+    private void ApplyWaterResistance()
     {
         if (rb.linearVelocity.magnitude > 0.1f)
         {
-            rb.linearVelocity *= waterResistance; // Slowdown in water
+            rb.linearVelocity *= 0.5f; // Slowdown in water
         }
     }
 
-    void ApplyHit(Vector3 direction, float power)
+    private void ApplyHit(Vector3 direction)
     {
-        if (inSand)
+        // Reduce the push force if the ball is in sand or water
+        float finalPushForce = pushForce;
+        if (currentSurface == SurfaceType.Sand)
         {
-            power *= sandPenalty; // Reduce hit strength in sand
+            finalPushForce *= 0.7f; // Sand penalty
+        }
+        else if (currentSurface == SurfaceType.Water)
+        {
+            finalPushForce *= 0.5f; // Additional water resistance
         }
 
-        if (inWater)
-        {
-            power *= 0.5f; // Additional slowdown in water
-        }
+        rb.AddForce(direction * finalPushForce, ForceMode.Impulse);
+    }
 
-        rb.AddForce(direction * power, ForceMode.Impulse);
+    private SurfaceType GetSurfaceType(string tag)
+    {
+        switch (tag)
+        {
+            case "Sand": return SurfaceType.Sand;
+            case "Water": return SurfaceType.Water;
+            default: return SurfaceType.Normal;
+        }
+    }
+
+    // Methods to stop and allow input
+    public void StopInput()
+    {
+        canInteract = false;
+    }
+
+    public void AllowInput()
+    {
+        canInteract = true;
     }
 }
+
+
+/// <summary>
+/// Enum to define different surface types the ball can interact with.
+/// </summary>
+public enum SurfaceType
+{
+    Normal,
+    Sand,
+    Water
+}
+
 
 
 
