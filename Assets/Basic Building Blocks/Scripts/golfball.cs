@@ -3,74 +3,59 @@ using System.Collections;
 using UnityEngine.XR;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.CompilerServices;
+using UnityEngine.InputSystem;
 
 public class golfball : MonoBehaviour
 {
 
-    // Reference to the single hole (assign via inspector)
+    // Reference to the hole 
     public GameObject hole;
-    // UI Text to display final score
-    //public Text finalScoreBoard;
-    // Optionally, reference a flag, controllers, etc.
-    //public GameObject flag;
-    //public GameObject rCont;
-    //public GameObject lCont;
-
-    // to count number of hits
-    //public TextMeshProUGUI hitcountText;
-
+   
     // Hole properties
-    private Vector3 ballStartPos;
     private Vector3 holePos;
     private float holeRadius;
-    private int holePar;
+    
 
     // Hit tracking and state
-    private int hitCount = 0;
+    //private int hitCount = 0;
     private bool ballInHole;
 
     // timers for how long ball is in the hole
     public float requiredTimeInHole = 0.5f;
     private float timeInHole = 0f;
 
+    // ball information
+    private Vector3 ballBeforeHitPosition;
+
+    // Input action for resetting ball's position
+    public InputActionProperty restBallAction;
+
+    // reference to ball object
+    private Rigidbody ball;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ball = GetComponent<Rigidbody>();
         InitializeHole();
+        restBallAction.action.Enable();
+    }
+
+    private void OnDestroy()
+    {
+        restBallAction.action.Disable();
     }
 
     private void InitializeHole()
     {
-        // Save the ball's starting position so you can reset if needed.
-        ballStartPos = transform.position;
-        // Set up hole info
+        ballBeforeHitPosition = transform.position;
         holePos = hole.transform.position;
-        // Assuming the hole's transform scale.x gives its diameter
         holeRadius = hole.transform.localScale.x / 2;
-        // Get the par from a Hole component on the hole (or set manually)
-        holePar = hole.GetComponent<Hole>() != null ? hole.GetComponent<Hole>().holePar : 3;
-        // Reset hit count and state
-        hitCount = 0;
         ballInHole = false;
-        // Make sure the ball collider is active
         GetComponent<SphereCollider>().enabled = true;
-
-
-
-
-
-
-        // Optionally, position a flag to mark the hole location
-        /*if (flag != null)
-        {
-            flag.transform.position = holePos;
-            flag.SetActive(true);
-        }*/
-        // Update initial UI if needed
-
-        //finalScoreBoard.text = $"Par: {holePar}\nHits: {hitCount}";
     }
 
     // Update is called once per frame
@@ -84,77 +69,40 @@ public class golfball : MonoBehaviour
             if(timeInHole >= requiredTimeInHole && !ballInHole)
             {
                 ballInHole = true;
-
-                // Disable the collider to avoid further triggers.
-                GetComponent<SphereCollider>().enabled = false;
-
-                // Optionally disable the flag to indicate the hole is "completed"
-                /*if (flag != null)
-                    flag.SetActive(false);*/
-
-                // Begin sinking animation/effect
-                StartCoroutine(SinkBall());
+                GetComponent<SphereCollider>().enabled = false;      // Disable the collider to avoid further triggers.
+                StartCoroutine(SinkBall());                          // Begin sinking animation/effect
             }
-            
         }
-        else
+        else{timeInHole = 0f;}
+
+        if(restBallAction.action.triggered)                         // if user presses reset button
         {
-            timeInHole = 0f;
+            ResetBallPosition();
         }
     }
-
 
     private IEnumerator SinkBall()
     {
-        // Optionally, wait a moment before sinking.
         yield return new WaitForSeconds(0.5f);
-        // Here you could animate the ball shrinking or fading.
-        // For simplicity, we’ll just disable the ball.
         gameObject.SetActive(false);
-        // Update the final score UI.
-        //finalScoreBoard.text = $"Course Completed!\nPar: {holePar}\nHits: {hitCount}";
     }
 
-
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
- 
-        if (other.tag == "Golf Club Head")
+        if (collision.gameObject.tag == "Golf Club Head")
         {
-            hitCount++;
-            //Transfer velocity
-            GetComponent<Rigidbody>().linearVelocity = other.GetComponent<GolfClubHead>().getVelocity() * 1.25F;
-            //finalScoreBoard.text = $"Par: {holePar}\nHits: {hitCount}";
-           // hitcountText.text = "Hits: " + hitCount;
+            ballBeforeHitPosition = transform.position;
+            //Debug.Log("Hit");
+            //hitCount++;
 
-
+            //GetComponent<Rigidbody>().linearVelocity = collision.gameObject.GetComponent<GolfClubHead>().getVelocity() * 1.25F;          //Transfer velocity
         }
     }
 
-    /*private void OnCollisionEnter(Collision collision)
+    private void ResetBallPosition()
     {
-        if (collision.collider.CompareTag("Border"))
-        {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.linearVelocity = Vector3.Reflect(rb.linearVelocity, collision.contacts[0].normal) * 0.75f;
-        }
-    }*/
-
-    /*public void ResetHole()
-    {
-        gameObject.SetActive(true);
-        transform.position = ballStartPos;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        hitCount = 0;
-        ballInHole = false;
-        GetComponent<SphereCollider>().enabled = true;
-        // Reset flag if used.
-        if (flag != null)
-            flag.SetActive(true);
-        // Update UI.
-        finalScoreBoard.text = $"Par: {holePar}\nHits: {hitCount}";
-    }*/
-
+        transform.position = ballBeforeHitPosition;
+        ball.linearVelocity = Vector3.zero;
+        ball.angularVelocity = Vector3.zero;
+    }
 }

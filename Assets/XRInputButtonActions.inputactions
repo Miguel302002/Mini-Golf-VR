@@ -1,0 +1,34 @@
+{
+    "name": "XRInputButtonActions",
+    "maps": [
+        {
+            "name": "XRControllers",
+            "id": "71622f10-767a-4c89-8ad6-57d02fc5b7bc",
+            "actions": [
+                {
+                    "name": "TeleportAction",
+                    "type": "Button",
+                    "id": "929eb433-584f-4539-83fc-ea1271dce735",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5e2288fc-5b7c-4e9b-b0b3-f2318bbbd427",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TeleportAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

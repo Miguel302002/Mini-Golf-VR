@@ -174,7 +174,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7823263290752612428, guid: 8822e2ce864d4514aac87d2cba515dc0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1747618294}
   m_SourcePrefab: {fileID: 100100000, guid: 8822e2ce864d4514aac87d2cba515dc0, type: 3}
 --- !u!1 &373899217
 GameObject:
@@ -590,6 +593,26 @@ PrefabInstance:
       propertyPath: hitcountText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7935239298629039443, guid: eab75cb09e4f6f14e97ba674bfb92c6e, type: 3}
+      propertyPath: restBallAction.m_Action.m_Name
+      value: Rest Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935239298629039443, guid: eab75cb09e4f6f14e97ba674bfb92c6e, type: 3}
+      propertyPath: restBallAction.m_Action.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935239298629039443, guid: eab75cb09e4f6f14e97ba674bfb92c6e, type: 3}
+      propertyPath: restBallAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 7c0dfb49-c09d-443d-8c74-dc167513fcbc
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935239298629039443, guid: eab75cb09e4f6f14e97ba674bfb92c6e, type: 3}
+      propertyPath: restBallAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <XRController>{RightHand}/{SecondaryButton}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935239298629039443, guid: eab75cb09e4f6f14e97ba674bfb92c6e, type: 3}
+      propertyPath: restBallAction.m_Action.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Rest Ball
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -703,6 +726,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1747618287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7823263290752612428, guid: 8822e2ce864d4514aac87d2cba515dc0, type: 3}
+  m_PrefabInstance: {fileID: 286695019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1747618288 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7598846378774501034, guid: 8822e2ce864d4514aac87d2cba515dc0, type: 3}
+  m_PrefabInstance: {fileID: 286695019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1747618294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747618287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50badf5053380dc4385f315b55fc9653, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballTransform: {fileID: 1182886206}
+  playerRig: {fileID: 1747618288}
+  teleportAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Teleport
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 963c13b0-1985-4f05-85db-d6ee5037f860
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: a3232815-add5-4dff-b606-9a08bfe73361
+        m_Path: <XRController>{RightHand}/{PrimaryButton}
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Teleport
+        m_Flags: 0
+      m_Flags: 0
+    m_Reference: {fileID: 0}
 --- !u!1001 &1864312116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -901,6 +968,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 901416689443928515, guid: a68fd9c3c3e2e8043a350cae68ee7fd6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613952983925784209, guid: a68fd9c3c3e2e8043a350cae68ee7fd6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3883252456363290908, guid: a68fd9c3c3e2e8043a350cae68ee7fd6, type: 3}
       propertyPath: controller
       value: 
@@ -912,6 +987,10 @@ PrefabInstance:
     - target: {fileID: 8606145538405116397, guid: a68fd9c3c3e2e8043a350cae68ee7fd6, type: 3}
       propertyPath: m_Name
       value: Golf Club
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606145538405116397, guid: a68fd9c3c3e2e8043a350cae68ee7fd6, type: 3}
+      propertyPath: m_TagString
+      value: Golf Club Head
       objectReference: {fileID: 0}
     - target: {fileID: 8776562088637086667, guid: a68fd9c3c3e2e8043a350cae68ee7fd6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1112,6 +1191,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1925882038424239524, guid: 4bcad02186280ad43b67b30f912879fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824932543023986771, guid: 4bcad02186280ad43b67b30f912879fa, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7294715600653977060, guid: 4bcad02186280ad43b67b30f912879fa, type: 3}
