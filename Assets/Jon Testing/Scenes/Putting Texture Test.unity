@@ -183,7 +183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1f49ad6703c68ce4084277eaebab0292, type: 2}
+  - {fileID: 2100000, guid: a24c4a77e7b5df2428a2b22849c8abbf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1318,6 +1318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cf9730f6531f64094d2430f686a6e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   sandDrag: 1
   iceDrag: 0.1
   waterDrag: 0.05
@@ -1338,6 +1339,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb0636ec5acc7f47bd9cb4e2b3bba94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  inWater: 0
+  canInteract: 1
+  sinkAmount: 1
+  sinkDuration: 2
+  resetDelay: 1
   minPosition: {x: -20, y: 0.5, z: -30}
   maxPosition: {x: 20, y: 0.5, z: 30}
 --- !u!114 &1815606641
@@ -1372,6 +1379,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushForce: 10
+  rb: {fileID: 0}
+  currentSurface: 0
+  canInteract: 1
 --- !u!54 &1815606644
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1443,7 +1453,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1790865101c0ab4439b4559a7910b5cb, type: 2}
+  - {fileID: 2100000, guid: 21d01493e53991640b70ccff0c0f252a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
