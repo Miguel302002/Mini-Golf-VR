@@ -149,3 +149,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275781b4386c24041a9109408ed83ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hole: {fileID: 0}
+  requiredTimeInHole: 0.5
+  restBallAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Rest Ball
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: ef865a0f-920e-490d-8756-a4f0b67594af
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
