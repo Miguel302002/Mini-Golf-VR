@@ -28,7 +28,7 @@ public class TeleportToBall : MonoBehaviour
     {
        
             Vector3 newPosition = ballTransform.position;
-            newPosition.y = playerRig.position.y; // Maintain player's Y level
+            //newPosition.y = playerRig.position.y; // Maintain player's Y level
             playerRig.position = newPosition;
         
         

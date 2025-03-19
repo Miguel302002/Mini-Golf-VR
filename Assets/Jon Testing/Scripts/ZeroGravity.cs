@@ -18,7 +18,13 @@ public class ZeroGravityZone : MonoBehaviour
     [Header("Exit Trigger")]
     [Tooltip("Reference to the trigger collider at the top of the channel")]
     public Collider exitTrigger;
-    
+
+    [Header("Direction of Force")]
+    [Tooltip("up = (0,1,0), left = (-1,0,0), forward = (0,0,1)")]
+    public Vector3 directionOfForce;
+
+
+
     private void OnTriggerEnter(Collider other)
     {
         // Check if the entering object is the golf ball
@@ -47,7 +53,7 @@ public class ZeroGBallHandler : MonoBehaviour
     private bool hasExited = false;
     private float originalDrag;
     private float originalAngularDrag;
-    
+
     public void Initialize(ZeroGravityZone zone, Rigidbody rb)
     {
         zeroGZone = zone;
@@ -67,7 +73,7 @@ public class ZeroGBallHandler : MonoBehaviour
         if (!hasExited)
         {
             // Apply constant upward force while in the zone
-            ballRb.AddForce(Vector3.up * zeroGZone.upwardForce, ForceMode.Force);
+            ballRb.AddForce(zeroGZone.directionOfForce * zeroGZone.upwardForce, ForceMode.Force);
             
             // Check if the ball has reached the exit trigger
             if (zeroGZone.exitTrigger != null && 
