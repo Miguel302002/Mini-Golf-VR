@@ -4,7 +4,7 @@ public class ZeroGravityZone : MonoBehaviour
 {
     [Header("Zone Settings")]
     [Tooltip("Tag of the golf ball")]
-    public string ballTag = "GolfBall";
+    public string ballTag = "Ball";
     
     [Tooltip("How strong the upward force is in the zero-G channel")]
     public float upwardForce = 2.0f;
@@ -74,13 +74,13 @@ public class ZeroGBallHandler : MonoBehaviour
         {
             // Apply constant upward force while in the zone
             ballRb.AddForce(zeroGZone.directionOfForce * zeroGZone.upwardForce, ForceMode.Force);
-            
+
             // Check if the ball has reached the exit trigger
-            if (zeroGZone.exitTrigger != null && 
-                zeroGZone.exitTrigger.bounds.Intersects(ballRb.GetComponent<Collider>().bounds))
-            {
-                ExitZeroGZone();
-            }
+             if (zeroGZone.exitTrigger != null && 
+                 zeroGZone.exitTrigger.bounds.Intersects(ballRb.GetComponent<Collider>().bounds))
+             {
+                 ExitZeroGZone();
+             }
         }
     }
     
