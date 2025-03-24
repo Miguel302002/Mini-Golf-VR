@@ -22,14 +22,14 @@ public class Portal : MonoBehaviour
     private Color originalColor;
     private void OnDestroy()
 {
-    Debug.Log($"Portal {name} being destroyed! isEntrance: {isEntrance}");
+    //Debug.Log($"Portal {name} being destroyed! isEntrance: {isEntrance}");
 }
 
     private void Start()
 {
     // Store reference to renderer
     portalRenderer = portalVisuals?.GetComponent<Renderer>();
-    Debug.Log($"Portal {name} Start. isEntrance: {isEntrance}");
+    //Debug.Log($"Portal {name} Start. isEntrance: {isEntrance}");
     if (portalRenderer != null)
     {
         originalColor = portalRenderer.material.color;
@@ -43,7 +43,7 @@ public class Portal : MonoBehaviour
     {
         if (PortalSystem.Instance == null)
         {
-            Debug.LogError("No PortalSystem found in the scene!");
+            //Debug.LogError("No PortalSystem found in the scene!");
             return;
         }
         
@@ -117,7 +117,7 @@ public class Portal : MonoBehaviour
         
         if (pair == null || pair.exitPortal == null)
         {
-            Debug.LogWarning("Portal pair not found or exit portal is missing!");
+            //Debug.LogWarning("Portal pair not found or exit portal is missing!");
             return;
         }
         
