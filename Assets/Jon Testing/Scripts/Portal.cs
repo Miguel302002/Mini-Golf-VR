@@ -12,7 +12,7 @@ public class Portal : MonoBehaviour
     public Portal linkedPortal;
     
     [Tooltip("Tag of objects that can be teleported")]
-    public string teleportableTag = "GolfBall";
+    public string teleportableTag = "Ball";
     
     [Header("Visual Settings")]
     public GameObject portalVisuals;
