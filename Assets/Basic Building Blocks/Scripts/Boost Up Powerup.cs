@@ -32,7 +32,7 @@ public class BoostUpPowerup : MonoBehaviour, Powerup_Interface
 
     private void Update()
     {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        //transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
