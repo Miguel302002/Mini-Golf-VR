@@ -45,7 +45,6 @@ public class Explosion : MonoBehaviour
 
         ball.AddExplosionForce(force, transform.position, radius);
 
-        Destroy(gameObject);
-
+        Destroy(transform.parent.gameObject);
     }
 }
