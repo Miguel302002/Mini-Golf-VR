@@ -19,7 +19,7 @@ public void InitializeAllPortals()
 {
     // Find all portals in the scene
     Portal[] allPortals = FindObjectsOfType<Portal>();
-    Debug.Log($"Found {allPortals.Length} portals:");
+    //Debug.Log($"Found {allPortals.Length} portals:");
     
     // Create portal pairs for all entrance portals with linked exits
     foreach (Portal portal in allPortals)
@@ -69,7 +69,7 @@ private void Awake()
     }
     else if (Instance != this)
     {
-        Debug.LogWarning($"Destroying duplicate PortalSystem on {gameObject.name}");
+        //Debug.LogWarning($"Destroying duplicate PortalSystem on {gameObject.name}");
         Destroy(gameObject);
         return; // Important - return to avoid running the rest of Awake
     }

@@ -8698,6 +8698,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball Viewing Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 4946828190149034834, guid: 0c0961d373b42c34d86388aa4cecc47a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7613641556300978039, guid: 0c0961d373b42c34d86388aa4cecc47a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -36.834
@@ -8989,6 +8993,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2540455224767673648, guid: 10db07309a573624caa5ff42fcabe2e9, type: 3}
       propertyPath: m_Name
+      value: Hole
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540455224767673648, guid: 10db07309a573624caa5ff42fcabe2e9, type: 3}
+      propertyPath: m_TagString
       value: Hole
       objectReference: {fileID: 0}
     - target: {fileID: 4081564106926955117, guid: 10db07309a573624caa5ff42fcabe2e9, type: 3}
@@ -9567,6 +9575,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7185655231421080535, guid: 8822e2ce864d4514aac87d2cba515dc0, type: 3}
+      propertyPath: m_AllowDynamicResolution
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7598846378774501034, guid: 8822e2ce864d4514aac87d2cba515dc0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.525
@@ -9706,6 +9718,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5494950060855817809, guid: 4bcad02186280ad43b67b30f912879fa, type: 3}
+      propertyPath: m_RenderShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6824932543023986771, guid: 4bcad02186280ad43b67b30f912879fa, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -9717,6 +9733,10 @@ PrefabInstance:
     - target: {fileID: 7359719546296316437, guid: 4bcad02186280ad43b67b30f912879fa, type: 3}
       propertyPath: m_Name
       value: ball_camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359719546296316437, guid: 4bcad02186280ad43b67b30f912879fa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

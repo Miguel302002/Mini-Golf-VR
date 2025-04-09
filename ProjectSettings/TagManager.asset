@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 3
   tags:
   - Golf Club Head
-  - Hole
   - Border
   - Grass
   - Sand
@@ -13,6 +12,7 @@ TagManager:
   - Ball
   - Ice
   - Lava
+  - Hole
   - Hole
   layers:
   - Default
