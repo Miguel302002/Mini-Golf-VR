@@ -34,6 +34,10 @@ public class golfball : MonoBehaviour
     // reference to ball object
     private Rigidbody ball;
 
+    // ***** Change By Jonathan for Hitcount UI START ***** 
+    private HitCounterUI hitCounter;
+    // ***** END *****
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,6 +46,7 @@ public class golfball : MonoBehaviour
         ball = GetComponent<Rigidbody>();
         InitializeHole();
         restBallAction.action.Enable();
+        hitCounter = FindObjectOfType<HitCounterUI>();
     }
 
     private void OnDestroy()
@@ -83,6 +88,12 @@ public class golfball : MonoBehaviour
 
     private IEnumerator SinkBall()
     {
+        // ***** Change By Jonathan for Hitcount UI START ***** 
+        // This will check to see if the course has been completed it will then save the hit score to the player memory, if the hit score is better than it will replace it otherwise it will stay the previous known best hit count
+        if (hitCounter != null){
+            hitCounter.CompleteHole();
+        }
+        // ***** END *****
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
     }
@@ -92,6 +103,11 @@ public class golfball : MonoBehaviour
         if (collision.gameObject.tag == "Golf Club Head")
         {
             ballBeforeHitPosition = transform.position;
+
+            // ***** Change By Jonathan for Hitcount UI START ***** 
+            OnBallHit();
+            // ***** END ******  
+
             //Debug.Log("Hit");
             //hitCount++;
 
@@ -105,4 +121,15 @@ public class golfball : MonoBehaviour
         ball.linearVelocity = Vector3.zero;
         ball.angularVelocity = Vector3.zero;
     }
+
+    // ***** Hit counter UI helper by Jonathan START ***** 
+    // Call this whenever the ball is hit
+    private void OnBallHit()
+    {
+        if (hitCounter != null)
+        {
+            hitCounter.IncrementHitCount();
+        }
+    }
+    // ***** END ***** 
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem; // Add this for the new Input System
 
 /// <summary>
 /// Controls the ball's behavior, applying forces based on player input and environmental factors (sand, water).
@@ -11,23 +12,33 @@ public class BallController : MonoBehaviour
     private SurfaceType currentSurface = SurfaceType.Normal; // Keeps track of the surface the ball is on
     private bool canInteract = true; // Flag to manage input during sinking
 
+    // Reference to the Keyboard class for input
+    private Keyboard keyboard;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        
+        // Get the keyboard device
+        keyboard = Keyboard.current;
+        if (keyboard == null)
+        {
+            Debug.LogError("No keyboard detected!");
+        }
     }
 
     private void Update()
     {
-        if (!canInteract) return; // Prevent input if canInteract is false
+        if (!canInteract || keyboard == null) return; // Prevent input if canInteract is false or no keyboard
 
         // Prevent input when in water
         if (currentSurface == SurfaceType.Water) return;
 
         // Handle player input to push the ball in the direction of the key press
-        if (Input.GetKeyDown(KeyCode.W)) ApplyHit(Vector3.forward);
-        if (Input.GetKeyDown(KeyCode.S)) ApplyHit(Vector3.back);
-        if (Input.GetKeyDown(KeyCode.A)) ApplyHit(Vector3.left);
-        if (Input.GetKeyDown(KeyCode.D)) ApplyHit(Vector3.right);
+        if (keyboard.wKey.wasPressedThisFrame) ApplyHit(Vector3.forward);
+        if (keyboard.sKey.wasPressedThisFrame) ApplyHit(Vector3.back);
+        if (keyboard.aKey.wasPressedThisFrame) ApplyHit(Vector3.left);
+        if (keyboard.dKey.wasPressedThisFrame) ApplyHit(Vector3.right);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -114,7 +125,6 @@ public class BallController : MonoBehaviour
         canInteract = true;
     }
 }
-
 
 /// <summary>
 /// Enum to define different surface types the ball can interact with.
