@@ -34,6 +34,10 @@ public class golfball : MonoBehaviour
     // reference to ball object
     private Rigidbody ball;
 
+    public int numberOfHits;
+
+    //public int lives = 3;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,6 +46,7 @@ public class golfball : MonoBehaviour
         ball = GetComponent<Rigidbody>();
         InitializeHole();
         restBallAction.action.Enable();
+        numberOfHits = 0;
     }
 
     private void OnDestroy()
@@ -93,9 +98,7 @@ public class golfball : MonoBehaviour
         {
             ballBeforeHitPosition = transform.position;
             //Debug.Log("Hit");
-            //hitCount++;
-
-            //GetComponent<Rigidbody>().linearVelocity = collision.gameObject.GetComponent<GolfClubHead>().getVelocity() * 1.25F;          //Transfer velocity
+            numberOfHits++;
         }
     }
 
@@ -104,5 +107,10 @@ public class golfball : MonoBehaviour
         transform.position = ballBeforeHitPosition;
         ball.linearVelocity = Vector3.zero;
         ball.angularVelocity = Vector3.zero;
+    }
+
+    private int ReturnNumberofHits()
+    {
+        return numberOfHits;
     }
 }
