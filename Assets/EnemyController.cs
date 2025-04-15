@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
     Animator animator;
 
+    public int hitsRemaining = 2;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -59,5 +61,20 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Golf Club Head"))
+        {
+            hitsRemaining--;
+            Debug.Log("Hit");
+
+            if(hitsRemaining <= 0)
+            {
+                Debug.Log("layer changed");
+                gameObject.layer = LayerMask.NameToLayer("Sliceable");
+            }
+        }
     }
 }

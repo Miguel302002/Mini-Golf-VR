@@ -3,43 +3,52 @@ using UnityEngine.InputSystem;
 
 public class Display_Manager : MonoBehaviour
 {
-
     public GameObject quad;
     public Camera ballCam;
-    //public GameObject scoreScreen;
+    public GameObject infoDisplay;
 
     public InputActionProperty toggleDisplay;
 
-    private bool displayActive = true;
+    private int displayMode = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         toggleDisplay.action.Enable();
+        ApplyDisplayMode();
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (toggleDisplay.action.triggered)
+        if(toggleDisplay.action.triggered)
         {
-            displayActive = !displayActive;
-            ToggleDisplay(displayActive);
+            displayMode = (displayMode + 1) % 3;
+            ApplyDisplayMode();
         }
     }
 
-    void ToggleDisplay(bool state)
+    void ApplyDisplayMode()
     {
-        // Toggle the quad and camera for the ball cam
-        if (quad != null)
-            quad.SetActive(state);
+        switch(displayMode)
+        {
+            case 0:
+                quad?.SetActive(true);
+                ballCam?.gameObject.SetActive(true);
+                infoDisplay?.SetActive(false);
+                break;
 
-        if (ballCam != null)
-            ballCam.gameObject.SetActive(state);
+            case 1:
+                quad?.SetActive(false);
+                ballCam?.gameObject.SetActive(false);
+                infoDisplay?.SetActive(true);
+                break;
 
-        // If you have a score screen, disable it when the mini golf view is active and vice versa.
-        /*if (scoreScreen != null)
-            scoreScreen.SetActive(!state);*/
+            case 2:
+                quad?.SetActive(false);
+                ballCam?.gameObject.SetActive(false);
+                infoDisplay?.SetActive(false);
+                break;
+        }
     }
+
 }

@@ -11,7 +11,7 @@ public class BallManager : MonoBehaviour
     public int maxLives = 3;
     public int currentLives;
 
-    //public GameObject gameOverMenu;
+    public GameObject gameOverMenu;
 
     void Awake()
     {
