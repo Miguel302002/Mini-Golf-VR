@@ -17,8 +17,7 @@ public class golfball : MonoBehaviour
     private float holeRadius;
     
 
-    // Hit tracking and state
-    //private int hitCount = 0;
+
     private bool ballInHole;
 
     // timers for how long ball is in the hole
@@ -34,9 +33,16 @@ public class golfball : MonoBehaviour
     // reference to ball object
     private Rigidbody ball;
 
-    public int numberOfHits;
+    public int numberOfHits = 0;
 
-    //public int lives = 3;
+    public GameObject courseCompleteMenu;
+    public GameObject firstStar;
+    public GameObject secondStar;
+    public GameObject thirdStar;
+
+
+
+    
 
 
 
@@ -90,6 +96,24 @@ public class golfball : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
+
+        courseCompleteMenu.SetActive(true);
+
+        if(numberOfHits > 25)
+        {
+            firstStar.SetActive(true);
+        }
+        else if(numberOfHits <= 25 && numberOfHits > 15)
+        {
+            firstStar.SetActive(true);
+            secondStar.SetActive(true);
+        }
+        else if(numberOfHits <= 15)
+        {
+            firstStar.SetActive(true);
+            secondStar.SetActive(true);
+            thirdStar.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

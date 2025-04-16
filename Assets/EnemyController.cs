@@ -68,11 +68,11 @@ public class EnemyController : MonoBehaviour
         if(other.CompareTag("Golf Club Head"))
         {
             hitsRemaining--;
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
 
             if(hitsRemaining <= 0)
             {
-                Debug.Log("layer changed");
+               // Debug.Log("layer changed");
                 gameObject.layer = LayerMask.NameToLayer("Sliceable");
             }
         }
