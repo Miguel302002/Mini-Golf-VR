@@ -13,6 +13,8 @@ public class BallManager : MonoBehaviour
 
     public GameObject gameOverMenu;
 
+    public GameObject ball;
+
     void Awake()
     {
         // Singleton pattern
@@ -55,8 +57,9 @@ public class BallManager : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("Game Over!");
-        //gameOverMenu.SetActive(true);
+        //Debug.Log("Game Over!");
+        ball.SetActive(false);
+        gameOverMenu.SetActive(true);
         // Pause game or show retry options here
     }
 
