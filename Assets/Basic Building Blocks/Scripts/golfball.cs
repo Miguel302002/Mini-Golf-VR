@@ -6,7 +6,6 @@ using TMPro;
 using System.Runtime.CompilerServices;
 using UnityEngine.InputSystem;
 
-private HitCounterUI hitCounter;
 
 public class golfball : MonoBehaviour
 {
@@ -41,7 +40,7 @@ public class golfball : MonoBehaviour
     public GameObject firstStar;
     public GameObject secondStar;
     public GameObject thirdStar;
-
+    private HitCounterUI hitCounter;
 
 
     
