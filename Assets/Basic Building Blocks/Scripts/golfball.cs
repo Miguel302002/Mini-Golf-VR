@@ -17,8 +17,7 @@ public class golfball : MonoBehaviour
     private float holeRadius;
     
 
-    // Hit tracking and state
-    //private int hitCount = 0;
+
     private bool ballInHole;
 
     // timers for how long ball is in the hole
@@ -34,9 +33,16 @@ public class golfball : MonoBehaviour
     // reference to ball object
     private Rigidbody ball;
 
-    // ***** Change By Jonathan for Hitcount UI START ***** 
-    private HitCounterUI hitCounter;
-    // ***** END *****
+    public int numberOfHits = 0;
+
+    public GameObject courseCompleteMenu;
+    public GameObject firstStar;
+    public GameObject secondStar;
+    public GameObject thirdStar;
+
+
+
+    
 
 
 
@@ -46,7 +52,7 @@ public class golfball : MonoBehaviour
         ball = GetComponent<Rigidbody>();
         InitializeHole();
         restBallAction.action.Enable();
-        hitCounter = FindObjectOfType<HitCounterUI>();
+        numberOfHits = 0;
     }
 
     private void OnDestroy()
@@ -88,14 +94,26 @@ public class golfball : MonoBehaviour
 
     private IEnumerator SinkBall()
     {
-        // ***** Change By Jonathan for Hitcount UI START ***** 
-        // This will check to see if the course has been completed it will then save the hit score to the player memory, if the hit score is better than it will replace it otherwise it will stay the previous known best hit count
-        if (hitCounter != null){
-            hitCounter.CompleteHole();
-        }
-        // ***** END *****
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
+
+        courseCompleteMenu.SetActive(true);
+
+        if(numberOfHits > 25)
+        {
+            firstStar.SetActive(true);
+        }
+        else if(numberOfHits <= 25 && numberOfHits > 15)
+        {
+            firstStar.SetActive(true);
+            secondStar.SetActive(true);
+        }
+        else if(numberOfHits <= 15)
+        {
+            firstStar.SetActive(true);
+            secondStar.SetActive(true);
+            thirdStar.SetActive(true);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -103,15 +121,8 @@ public class golfball : MonoBehaviour
         if (collision.gameObject.tag == "Golf Club Head")
         {
             ballBeforeHitPosition = transform.position;
-
-            // ***** Change By Jonathan for Hitcount UI START ***** 
-            OnBallHit();
-            // ***** END ******  
-
             //Debug.Log("Hit");
-            //hitCount++;
-
-            //GetComponent<Rigidbody>().linearVelocity = collision.gameObject.GetComponent<GolfClubHead>().getVelocity() * 1.25F;          //Transfer velocity
+            numberOfHits++;
         }
     }
 
@@ -122,14 +133,8 @@ public class golfball : MonoBehaviour
         ball.angularVelocity = Vector3.zero;
     }
 
-    // ***** Hit counter UI helper by Jonathan START ***** 
-    // Call this whenever the ball is hit
-    private void OnBallHit()
+    private int ReturnNumberofHits()
     {
-        if (hitCounter != null)
-        {
-            hitCounter.IncrementHitCount();
-        }
+        return numberOfHits;
     }
-    // ***** END ***** 
 }
