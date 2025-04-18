@@ -11,5 +11,5 @@
 ### Richard Lam https://github.com/richardlam2
 ### Mohammed Bakeer https://github.com/MohammadBakeer
 ## Project Description:
-
+### Our VR Mini Golf game offers a two level arcade-like golfing experience with intuitive VR controls and creatively designed courses. Players will explore distinct environments each with several challenges and obstacles which will provide the player with an engaging experience before passing to the next level in the story. 
 ## Instructions:
