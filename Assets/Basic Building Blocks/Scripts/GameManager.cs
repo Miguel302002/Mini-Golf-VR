@@ -10,4 +10,9 @@ public class GameManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
+
+    public void LoadLevelOne()
+    {
+        SceneManager.LoadScene("ActualCourse1");
+    }
 }
