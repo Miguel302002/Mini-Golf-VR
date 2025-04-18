@@ -6,6 +6,8 @@ using TMPro;
 using System.Runtime.CompilerServices;
 using UnityEngine.InputSystem;
 
+private HitCounterUI hitCounter;
+
 public class golfball : MonoBehaviour
 {
 
@@ -53,6 +55,9 @@ public class golfball : MonoBehaviour
         InitializeHole();
         restBallAction.action.Enable();
         numberOfHits = 0;
+
+        // Find the HitCounterUI in the scene
+        hitCounter = FindObjectOfType<HitCounterUI>();
     }
 
     private void OnDestroy()
@@ -94,6 +99,11 @@ public class golfball : MonoBehaviour
 
     private IEnumerator SinkBall()
     {
+        // Save the best score when the hole is completed
+        if (hitCounter != null)
+        {
+            hitCounter.CompleteHole();
+        }
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
 
@@ -123,6 +133,12 @@ public class golfball : MonoBehaviour
             ballBeforeHitPosition = transform.position;
             //Debug.Log("Hit");
             numberOfHits++;
+
+            // Update the HitCounterUI
+            if (hitCounter != null)
+            {
+                hitCounter.IncrementHitCount();
+            }
         }
     }
 
