@@ -25,7 +25,7 @@ public class golfball : MonoBehaviour
     private float timeInHole = 0f;
 
     // ball information
-    private Vector3 ballBeforeHitPosition;
+    public Vector3 ballBeforeHitPosition;
 
     // Input action for resetting ball's position
     public InputActionProperty restBallAction;

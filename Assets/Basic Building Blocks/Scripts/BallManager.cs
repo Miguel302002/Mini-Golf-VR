@@ -15,6 +15,11 @@ public class BallManager : MonoBehaviour
 
     public GameObject ball;
 
+    public golfball ball_information;
+
+    public Transform head;
+    public float spawnDistance = 2f;
+
     void Awake()
     {
         // Singleton pattern
@@ -40,6 +45,17 @@ public class BallManager : MonoBehaviour
         }
     }
 
+
+    public void TakeDamageBarrier(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            LoseLifeBarrier();
+        }
+    }
+
     void LoseLife()
     {
         currentLives--;
@@ -51,7 +67,27 @@ public class BallManager : MonoBehaviour
         else
         {
             currentHealth = maxHealth;
+            
+        }
+    }
+
+
+    void LoseLifeBarrier()
+    {
+        currentLives--;
+
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            currentHealth = maxHealth;
             // Reset ball position maybe?
+            ball.transform.position = ball_information.ballBeforeHitPosition;
+            ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+            
         }
     }
 
@@ -59,8 +95,25 @@ public class BallManager : MonoBehaviour
     {
         //Debug.Log("Game Over!");
         ball.SetActive(false);
+
+        Vector3 forward = head.forward;
+        forward.y = 0;
+        forward.Normalize();
+
+        Vector3 spawnPosition = head.position + forward * spawnDistance;
+        spawnPosition.y = head.position.y;
+
+        gameOverMenu.transform.position = spawnPosition;
+
+        Vector3 lookDirection = head.position - gameOverMenu.transform.position;
+        lookDirection.y = 0;
+        gameOverMenu.transform.rotation = Quaternion.LookRotation(-lookDirection);
+        
+
+
+        //gameOverMenu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         gameOverMenu.SetActive(true);
-        // Pause game or show retry options here
+        
     }
 
     public void RetryHole()

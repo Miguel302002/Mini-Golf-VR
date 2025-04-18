@@ -20,7 +20,7 @@ public class DeathBarrier : MonoBehaviour
         if (other.gameObject.CompareTag("Ball"))
         {
             
-            BallManager.Instance.TakeDamage(100);
+            BallManager.Instance.TakeDamageBarrier(100);
         }
     }
 }

@@ -65,7 +65,7 @@ private void Awake()
     if (Instance == null)
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Optional - keeps it between scenes
+        //DontDestroyOnLoad(gameObject); // Optional - keeps it between scenes
     }
     else if (Instance != this)
     {
