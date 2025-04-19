@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7326409289844344979
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7645909081249042982}
+  - component: {fileID: 3780535506379661518}
+  m_Layer: 0
+  m_Name: Portal system
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7645909081249042982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326409289844344979}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.329374, y: 40.477703, z: -36.00586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3780535506379661518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326409289844344979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ff070b3a8612b4ebbd8377765b2029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalPairs:
+  - entrancePortal: {fileID: 0}
+    exitPortal: {fileID: 0}
+    portalColor: {r: 0, g: 0, b: 0, a: 0}
+    velocityMultiplier: 0
+    preserveAngle: 1
+  - entrancePortal: {fileID: 0}
+    exitPortal: {fileID: 0}
+    portalColor: {r: 0, g: 1, b: 0.904428, a: 0}
+    velocityMultiplier: 0
+    preserveAngle: 1

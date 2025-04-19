@@ -15,4 +15,14 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("ActualCourse1");
     }
+
+    public void LoadStartScreen()
+    {
+        SceneManager.LoadScene("Start Screen");
+    }
+
+    public void LoadLevelTwo()
+    {
+        SceneManager.LoadScene("Course2");
+    }
 }

@@ -45,17 +45,6 @@ public class BallManager : MonoBehaviour
         }
     }
 
-
-    public void TakeDamageBarrier(int damage)
-    {
-        currentHealth -= damage;
-
-        if (currentHealth <= 0)
-        {
-            LoseLifeBarrier();
-        }
-    }
-
     void LoseLife()
     {
         currentLives--;
@@ -71,6 +60,16 @@ public class BallManager : MonoBehaviour
         }
     }
 
+    public void TakeDamageBarrier(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            LoseLifeBarrier();
+        }
+    }
+
 
     void LoseLifeBarrier()
     {
@@ -83,13 +82,74 @@ public class BallManager : MonoBehaviour
         else
         {
             currentHealth = maxHealth;
-            // Reset ball position maybe?
             ball.transform.position = ball_information.ballBeforeHitPosition;
             ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             
         }
     }
+
+
+    public void TakeDamageExplosion(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            LoseLifeExplosion();
+        }
+    }
+
+
+    void LoseLifeExplosion()
+    {
+        currentLives--;
+
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            ball.transform.position = ball_information.ballBeforeHitPosition;
+            ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        }
+    }
+
+
+    public void TakeDamageWater(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            LoseLifeWater();
+        }
+    }
+
+
+    void LoseLifeWater()
+    {
+        currentLives--;
+
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            ball.transform.position = ball_information.ballBeforeHitPosition;
+            ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        }
+    }
+
+
 
     void GameOver()
     {

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
@@ -35,7 +36,18 @@ public class Explosion : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
-            Explode(rb);
+
+            if(other.tag == "Fake Portal")
+            {
+                ExplodeFakePortal(rb);
+            }
+            else
+            {
+                Explode(rb);
+            }
+            
+            BallManager.Instance.TakeDamageExplosion(100);
+            
         }
     }
 
@@ -46,5 +58,20 @@ public class Explosion : MonoBehaviour
         ball.AddExplosionForce(force, transform.position, radius);
 
         Destroy(transform.parent.gameObject);
+       
+
     }
+
+    void ExplodeFakePortal(Rigidbody ball)
+    {
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+
+        ball.AddExplosionForce(force, transform.position, radius);
+
+        Destroy(gameObject);
+
+
+    }
+
+
 }
