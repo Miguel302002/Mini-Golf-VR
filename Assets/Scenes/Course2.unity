@@ -451,6 +451,10 @@ PrefabInstance:
       value: Skeleton Final
       objectReference: {fileID: 0}
     - target: {fileID: 5345976635380340185, guid: 77a72cced2e342149a27bdbb72f20402, type: 3}
+      propertyPath: attackCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345976635380340185, guid: 77a72cced2e342149a27bdbb72f20402, type: 3}
       propertyPath: knockbackForce
       value: 2
       objectReference: {fileID: 0}
@@ -458,6 +462,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 5231347948030123088}
+    - target: {fileID: 7884549730091728055, guid: 77a72cced2e342149a27bdbb72f20402, type: 3}
+      propertyPath: m_Speed
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1276,6 +1284,10 @@ PrefabInstance:
     - target: {fileID: 394893562004288166, guid: d2ad7c98170c50641bcd7ab067071d64, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698703417937785055, guid: d2ad7c98170c50641bcd7ab067071d64, type: 3}
+      propertyPath: m_Range
+      value: 3.65
       objectReference: {fileID: 0}
     - target: {fileID: 4698703417937785055, guid: d2ad7c98170c50641bcd7ab067071d64, type: 3}
       propertyPath: m_Lightmapping
@@ -16986,6 +16998,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4698703417937785055, guid: d2ad7c98170c50641bcd7ab067071d64, type: 3}
+      propertyPath: m_Range
+      value: 4.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 4698703417937785055, guid: d2ad7c98170c50641bcd7ab067071d64, type: 3}
       propertyPath: m_Lightmapping
       value: 1
       objectReference: {fileID: 0}
@@ -19857,6 +19873,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1094300640}
     m_Modifications:
+    - target: {fileID: 937764974867154051, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1385215039651774642, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -19884,6 +19904,10 @@ PrefabInstance:
     - target: {fileID: 1385215039651774642, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009072423859483297, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2080919069577638392, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
       propertyPath: m_Pivot.x
@@ -19947,7 +19971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2080919069577638392, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 14.449
+      value: 13.695
       objectReference: {fileID: 0}
     - target: {fileID: 2080919069577638392, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -19963,6 +19987,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2080919069577638392, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791437154853949813, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
+      propertyPath: m_Color.a
+      value: 0.30588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791437154853949813, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
+      propertyPath: m_Color.b
+      value: 0.876246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791437154853949813, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
+      propertyPath: m_Color.g
+      value: 0.876246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791437154853949813, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701679366311373836, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5910230069406897042, guid: 3e157a6f311bf9c469c27d485dd4b838, type: 3}
