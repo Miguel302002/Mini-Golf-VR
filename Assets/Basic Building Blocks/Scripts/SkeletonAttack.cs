@@ -21,6 +21,7 @@ public class SkeletonAttack : MonoBehaviour
                 {
                     Vector3 knockbackDir = (other.transform.position - transform.position).normalized;
                     ballRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse);
+                    AudioManager.instance.Play("Skeleton Attack");
                 }
 
 

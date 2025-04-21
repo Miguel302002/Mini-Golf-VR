@@ -102,16 +102,16 @@ public class golfball : MonoBehaviour
         courseCompleteMenu.SetActive(true);
         AudioManager.instance.Play("Course Complete");
 
-        if (numberOfHits > 25)
+        if (numberOfHits > 40)
         {
             firstStar.SetActive(true);
         }
-        else if(numberOfHits <= 25 && numberOfHits > 15)
+        else if(numberOfHits <= 40 && numberOfHits > 25)
         {
             firstStar.SetActive(true);
             secondStar.SetActive(true);
         }
-        else if(numberOfHits <= 15)
+        else if(numberOfHits <= 25)
         {
             firstStar.SetActive(true);
             secondStar.SetActive(true);

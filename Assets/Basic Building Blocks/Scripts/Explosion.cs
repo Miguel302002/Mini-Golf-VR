@@ -47,6 +47,7 @@ public class Explosion : MonoBehaviour
             }
             
             BallManager.Instance.TakeDamageExplosion(100);
+            AudioManager.instance.Play("Explosion");
             
         }
     }

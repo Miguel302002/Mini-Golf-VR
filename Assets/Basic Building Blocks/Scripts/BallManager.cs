@@ -177,6 +177,7 @@ public class BallManager : MonoBehaviour
 
         //gameOverMenu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         gameOverMenu.SetActive(true);
+        AudioManager.instance.Stop("Main Music");
         AudioManager.instance.Play("Game Over");
 
     }
