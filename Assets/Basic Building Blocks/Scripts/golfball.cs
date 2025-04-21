@@ -40,7 +40,7 @@ public class golfball : MonoBehaviour
     public GameObject firstStar;
     public GameObject secondStar;
     public GameObject thirdStar;
-    private HitCounterUI hitCounter;
+    /* private HitCounterUI hitCounter; */
 
 
     
@@ -55,8 +55,8 @@ public class golfball : MonoBehaviour
         restBallAction.action.Enable();
         numberOfHits = 0;
 
-        // Find the HitCounterUI in the scene
-        hitCounter = FindObjectOfType<HitCounterUI>();
+        /* // Find the HitCounterUI in the scene
+        hitCounter = FindObjectOfType<HitCounterUI>(); */
     }
 
     private void OnDestroy()
@@ -98,11 +98,11 @@ public class golfball : MonoBehaviour
 
     private IEnumerator SinkBall()
     {
-        // Save the best score when the hole is completed
+        /* // Save the best score when the hole is completed
         if (hitCounter != null)
         {
             hitCounter.CompleteHole();
-        }
+        } */
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
 
@@ -133,11 +133,11 @@ public class golfball : MonoBehaviour
             //Debug.Log("Hit");
             numberOfHits++;
 
-            // Update the HitCounterUI
+            /* // Update the HitCounterUI
             if (hitCounter != null)
             {
                 hitCounter.IncrementHitCount();
-            }
+            } */
         }
     }
 
