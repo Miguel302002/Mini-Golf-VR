@@ -97,6 +97,7 @@ public class Portal : MonoBehaviour
             if (rb != null && PortalSystem.Instance.CanTeleport(rb))
             {
                 TeleportObject(rb);
+                AudioManager.instance.Play("Portal");
             }
         }
     }

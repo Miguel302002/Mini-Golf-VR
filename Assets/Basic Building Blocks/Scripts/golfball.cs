@@ -95,11 +95,14 @@ public class golfball : MonoBehaviour
     private IEnumerator SinkBall()
     {
         yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.Play("Ball in Hole");
+
         gameObject.SetActive(false);
 
         courseCompleteMenu.SetActive(true);
+        AudioManager.instance.Play("Course Complete");
 
-        if(numberOfHits > 25)
+        if (numberOfHits > 25)
         {
             firstStar.SetActive(true);
         }
@@ -121,6 +124,7 @@ public class golfball : MonoBehaviour
         if (collision.gameObject.tag == "Golf Club Head")
         {
             ballBeforeHitPosition = transform.position;
+            AudioManager.instance.Play("Ball Hit");
             //Debug.Log("Hit");
             numberOfHits++;
         }

@@ -5,6 +5,7 @@ public class ControlButton : MonoBehaviour
 
     public GameObject wholeMenu;
     public GameObject controlsInformation;
+     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,12 +20,14 @@ public class ControlButton : MonoBehaviour
 
     public void toggleControlInformation()
     {
+        AudioManager.instance.Play("UI Sounds");
         wholeMenu.SetActive(false);
         controlsInformation.SetActive(true);
     }
 
     public void toggleWholeMenuViaBackButton()
     {
+        AudioManager.instance.Play("UI Sounds");
         controlsInformation.SetActive(false);
         wholeMenu.SetActive(true);
         

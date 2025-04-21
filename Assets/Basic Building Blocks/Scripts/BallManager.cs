@@ -48,6 +48,7 @@ public class BallManager : MonoBehaviour
     void LoseLife()
     {
         currentLives--;
+        AudioManager.instance.Play("Ball Lose Life");
 
         if (currentLives <= 0)
         {
@@ -74,6 +75,7 @@ public class BallManager : MonoBehaviour
     void LoseLifeBarrier()
     {
         currentLives--;
+        AudioManager.instance.Play("Ball Lose Life");
 
         if (currentLives <= 0)
         {
@@ -104,6 +106,7 @@ public class BallManager : MonoBehaviour
     void LoseLifeExplosion()
     {
         currentLives--;
+        AudioManager.instance.Play("Ball Lose Life");
 
         if (currentLives <= 0)
         {
@@ -134,6 +137,7 @@ public class BallManager : MonoBehaviour
     void LoseLifeWater()
     {
         currentLives--;
+        AudioManager.instance.Play("Ball Lose Life");
 
         if (currentLives <= 0)
         {
@@ -173,7 +177,8 @@ public class BallManager : MonoBehaviour
 
         //gameOverMenu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         gameOverMenu.SetActive(true);
-        
+        AudioManager.instance.Play("Game Over");
+
     }
 
     public void RetryHole()
