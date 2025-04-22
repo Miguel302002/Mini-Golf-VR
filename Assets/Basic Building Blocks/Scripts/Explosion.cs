@@ -10,6 +10,8 @@ public class Explosion : MonoBehaviour
     public float radius = 5f;
 
     public GameObject explosionEffect;
+
+    public bool isFakePortal = false;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,7 +39,7 @@ public class Explosion : MonoBehaviour
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
 
-            if(other.tag == "Fake Portal")
+            if (isFakePortal)
             {
                 ExplodeFakePortal(rb);
             }

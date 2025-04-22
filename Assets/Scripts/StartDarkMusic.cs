@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class StartDarkMusic : MonoBehaviour
 {
+
+    private bool startedAlready = false;
+    public bool comingFromIce = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,8 +21,29 @@ public class StartDarkMusic : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            AudioManager.instance.Stop("Main Music");
-            AudioManager.instance.Play("Dark Music");
+            if (!startedAlready && !comingFromIce)
+            {
+                AudioManager.instance.Stop("Main Music");
+                AudioManager.instance.Play("Dark Music");
+                startedAlready = true;
+            }
+
+            else if(startedAlready && comingFromIce)
+            {
+                AudioManager.instance.Stop("Main Music");
+                AudioManager.instance.Stop("Wind");
+                AudioManager.instance.Play("Dark Music");
+                startedAlready = false;
+            }
+
+            else if(!startedAlready && comingFromIce)
+            {
+                AudioManager.instance.Stop("Main Music");
+                AudioManager.instance.Stop("Wind");
+                AudioManager.instance.Play("Dark Music");
+                startedAlready = true;
+            }
+            
         }
 
     }
