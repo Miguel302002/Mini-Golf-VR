@@ -1,5 +1,5 @@
 # PutterVerse
-## Group Name: Team VR NEWBS
+## Group Name: Team VR NEWBIES
 ## Group Members:
 ### Miguel Rodriguez (Leader) https://github.com/Miguel302002
 ### Jonathan Reyes https://github.com/JonaR43
