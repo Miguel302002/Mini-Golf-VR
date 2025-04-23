@@ -15,6 +15,7 @@ TagManager:
   - Hole
   - Hole
   - Enemy
+  - Fake Portal
   layers:
   - Default
   - TransparentFX

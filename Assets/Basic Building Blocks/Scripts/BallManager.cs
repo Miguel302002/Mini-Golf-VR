@@ -45,6 +45,21 @@ public class BallManager : MonoBehaviour
         }
     }
 
+    void LoseLife()
+    {
+        currentLives--;
+        AudioManager.instance.Play("Ball Lose Life");
+
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            
+        }
+    }
 
     public void TakeDamageBarrier(int damage)
     {
@@ -56,25 +71,11 @@ public class BallManager : MonoBehaviour
         }
     }
 
-    void LoseLife()
-    {
-        currentLives--;
-
-        if (currentLives <= 0)
-        {
-            GameOver();
-        }
-        else
-        {
-            currentHealth = maxHealth;
-            
-        }
-    }
-
 
     void LoseLifeBarrier()
     {
         currentLives--;
+        AudioManager.instance.Play("Ball Lose Life");
 
         if (currentLives <= 0)
         {
@@ -83,13 +84,76 @@ public class BallManager : MonoBehaviour
         else
         {
             currentHealth = maxHealth;
-            // Reset ball position maybe?
             ball.transform.position = ball_information.ballBeforeHitPosition;
             ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             
         }
     }
+
+
+    public void TakeDamageExplosion(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            LoseLifeExplosion();
+        }
+    }
+
+
+    void LoseLifeExplosion()
+    {
+        currentLives--;
+        AudioManager.instance.Play("Ball Lose Life");
+
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            ball.transform.position = ball_information.ballBeforeHitPosition;
+            ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        }
+    }
+
+
+    public void TakeDamageWater(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            LoseLifeWater();
+        }
+    }
+
+
+    void LoseLifeWater()
+    {
+        currentLives--;
+        AudioManager.instance.Play("Ball Lose Life");
+
+        if (currentLives <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            ball.transform.position = ball_information.ballBeforeHitPosition;
+            ball.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+
+        }
+    }
+
+
 
     void GameOver()
     {
@@ -113,7 +177,9 @@ public class BallManager : MonoBehaviour
 
         //gameOverMenu.transform.position = head.position + new Vector3(head.forward.x, 0, head.forward.z).normalized * spawnDistance;
         gameOverMenu.SetActive(true);
-        
+        AudioManager.instance.Stop("Main Music");
+        AudioManager.instance.Play("Game Over");
+
     }
 
     public void RetryHole()

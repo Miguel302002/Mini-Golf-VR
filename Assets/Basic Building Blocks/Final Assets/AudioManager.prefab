@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3350746403430563596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6681763458853903504}
+  - component: {fileID: 8211049183873961367}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6681763458853903504
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350746403430563596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.7995687, y: -4.144639, z: 4.9945817}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8211049183873961367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3350746403430563596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d62c0084869364194f4cd975d0f906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Start Screen Music
+    clip: {fileID: 8300000, guid: 55d44d6a9c987eb4d9895188e3a00239, type: 3}
+    volume: 0.18
+    pitch: 1
+    loop: 1
+    playOnAwake: 1
+    source: {fileID: 0}
+  - name: UI Sounds
+    clip: {fileID: 8300000, guid: a64211c58bb2c104d8a9c34baea6e63a, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Ball Hit
+    clip: {fileID: 8300000, guid: 2ab27c5eb74d3de43be49bb14117a991, type: 3}
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Powerup
+    clip: {fileID: 8300000, guid: 6158d2a79878d0f4aad6de1fe0ce1b9c, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Bounce Powerup
+    clip: {fileID: 8300000, guid: af77f2f6f3bbcd74d88aa21b6e02eba0, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Course Complete
+    clip: {fileID: 8300000, guid: e5eabbdee80a6614d84c243b58408d5f, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Game Over
+    clip: {fileID: 8300000, guid: bdfb74106ba6f2641bda5e7e84b141c7, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Ball Lose Life
+    clip: {fileID: 8300000, guid: c3a54304ffa5ae441b5d7c539476e6d6, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Ball in Hole
+    clip: {fileID: 8300000, guid: dccbbb72f410411418492819b4941c3e, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}

@@ -38,6 +38,7 @@ public class ShrinkBallPowerup : MonoBehaviour, Powerup_Interface
         {
             // Get the power-up handler from the ball.
             PowerUpHandler handler = other.GetComponent<PowerUpHandler>();
+            AudioManager.instance.Play("Powerup");
             if (handler != null)
             {
                 // Store this power-up (as an IPowerUp) on the ball.
@@ -76,6 +77,7 @@ public class ShrinkBallPowerup : MonoBehaviour, Powerup_Interface
         Vector3 originalScale = ball.transform.localScale;
         // Apply the shrink effect.
         ball.transform.localScale = originalScale * shrinkFactor;
+        AudioManager.instance.Play("Shrink Powerup");
 
         // Wait for the power-up duration.
         yield return new WaitForSeconds(powerUpDuration);

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Explosion : MonoBehaviour
@@ -9,6 +10,8 @@ public class Explosion : MonoBehaviour
     public float radius = 5f;
 
     public GameObject explosionEffect;
+
+    public bool isFakePortal = false;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,7 +38,19 @@ public class Explosion : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             Rigidbody rb = other.GetComponent<Rigidbody>();
-            Explode(rb);
+
+            if (isFakePortal)
+            {
+                ExplodeFakePortal(rb);
+            }
+            else
+            {
+                Explode(rb);
+            }
+            
+            BallManager.Instance.TakeDamageExplosion(100);
+            AudioManager.instance.Play("Explosion");
+            
         }
     }
 
@@ -46,5 +61,20 @@ public class Explosion : MonoBehaviour
         ball.AddExplosionForce(force, transform.position, radius);
 
         Destroy(transform.parent.gameObject);
+       
+
     }
+
+    void ExplodeFakePortal(Rigidbody ball)
+    {
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+
+        ball.AddExplosionForce(force, transform.position, radius);
+
+        Destroy(gameObject);
+
+
+    }
+
+
 }

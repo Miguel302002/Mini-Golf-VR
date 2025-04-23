@@ -43,6 +43,7 @@ public class BoostUpPowerup : MonoBehaviour, Powerup_Interface
         {
             // Get the power-up handler from the ball.
             PowerUpHandler handler = other.GetComponent<PowerUpHandler>();
+            AudioManager.instance.Play("Powerup");
             if (handler != null)
             {
                 // Store this power-up (as an IPowerUp) on the ball.
@@ -80,6 +81,7 @@ public class BoostUpPowerup : MonoBehaviour, Powerup_Interface
         Rigidbody ballRb = ball.GetComponent<Rigidbody>();
         
         ballRb.AddForce(directionOfForce * upwardForce, ForceMode.Impulse);
+        AudioManager.instance.Play("Bounce Powerup");
 
         yield return new WaitForSeconds(powerUpDuration);
         

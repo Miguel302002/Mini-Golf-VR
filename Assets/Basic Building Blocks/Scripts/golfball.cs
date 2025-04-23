@@ -104,20 +104,23 @@ public class golfball : MonoBehaviour
             hitCounter.CompleteHole();
         } */
         yield return new WaitForSeconds(0.5f);
+        AudioManager.instance.Play("Ball in Hole");
+
         gameObject.SetActive(false);
 
         courseCompleteMenu.SetActive(true);
+        AudioManager.instance.Play("Course Complete");
 
-        if(numberOfHits > 25)
+        if (numberOfHits > 40)
         {
             firstStar.SetActive(true);
         }
-        else if(numberOfHits <= 25 && numberOfHits > 15)
+        else if(numberOfHits <= 40 && numberOfHits > 25)
         {
             firstStar.SetActive(true);
             secondStar.SetActive(true);
         }
-        else if(numberOfHits <= 15)
+        else if(numberOfHits <= 25)
         {
             firstStar.SetActive(true);
             secondStar.SetActive(true);
@@ -130,6 +133,7 @@ public class golfball : MonoBehaviour
         if (collision.gameObject.tag == "Golf Club Head")
         {
             ballBeforeHitPosition = transform.position;
+            AudioManager.instance.Play("Ball Hit");
             //Debug.Log("Hit");
             numberOfHits++;
 

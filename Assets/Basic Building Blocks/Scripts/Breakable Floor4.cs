@@ -31,6 +31,7 @@ public class BreakableFloor4 : MonoBehaviour
     private IEnumerator DisableAfterDelay()
     {
         yield return new WaitForSeconds(delay);
+        AudioManager.instance.Play("Laugh");
         gameObject.SetActive(false);
     }
 }

@@ -32,6 +32,7 @@ public class ZeroGravityZone : MonoBehaviour
         {
             // Get the rigidbody of the ball
             Rigidbody ballRb = other.GetComponent<Rigidbody>();
+            AudioManager.instance.Play("Air");
             
             if (ballRb != null)
             {
