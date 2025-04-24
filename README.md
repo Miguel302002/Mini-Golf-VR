@@ -5,7 +5,7 @@ Welcome to Mini Golf VR — a fun and immersive virtual reality mini golf experi
 📌 Features
 🏌️‍♂️ Fully immersive VR experience
 
-🎨 Multiple unique themed courses (Beach, Space, Haunted Mansion, and more)
+🎨 Multiple unique themed courses (Ice Arena, Haunted Mansion, and more)
 
 🎯 Realistic golf ball physics
 
